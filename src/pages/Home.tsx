@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 
  interface TodoType  {
@@ -8,13 +9,21 @@ import React, { useState } from 'react'
  }
 const Home = () => {
 
-const [todos, setTodos] = useState<TodoType[]> ([])
+const [todos, setTodos] = useState<TodoType[]>([])
+   
+  const url:string = import.meta.env.VITE_BASE_URL
+  const getTodos = async () => 
+   try {
+    
+    const {data} = await axios<TodoType[]>(url)
+
+   } catch (error) {
+    
+   }
 
 
-
-  return (
-    <div>Home</div>
-  )
+  return <div onClick={()=> setTodos([{id:5, todo:"eren", isDone:"true"}])}>Home</div>
+  
 }
 
 export default Home
